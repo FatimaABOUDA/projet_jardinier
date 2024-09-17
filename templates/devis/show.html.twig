@@ -1,0 +1,215 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Devis{% endblock %}
+{% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code {
+        background: #F5F5F5; padding: 2px 6px;
+        }
+
+            .example-wrapper label {
+            color: #7484fd;
+                font-weight: bold;
+                margin: 10px;
+            }
+            input {
+            color: #7484fd;
+            border: 1px solid #7484fd;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            }
+            input:focus {
+            color: #7484fd;
+            border: 1px solid #7484fd;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            }
+            input:active {
+            color: #7484fd;
+            border: 1px solid #7484fd;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            }
+            input:hover {
+            color: #7484fd;
+            border: 1px solid #7484fd;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            }
+            input:visited {
+            color: #7484fd;
+            border: 1px solid #7484fd;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            }
+
+            input[type="submit"] {
+            color: #7484fd;
+                border: 1px solid #7484fd;
+                border-radius: 5px;
+                padding: 10px;
+                margin: 10px;
+                background-color: #7484fd;
+                color: white;
+            }
+            input[type="submit"]:hover {
+            color: #7484fd;
+                border: 1px solid #7484fd;
+                border-radius: 5px;
+                padding: 10px;
+                margin: 10px;
+                background-color: white;
+                color: #7484fd;
+            }
+            input[type="submit"]:active {
+            color: #7484fd;
+                border: 1px solid #7484fd;
+                border-radius: 5px;
+                padding: 10px;
+                margin: 10px;
+                background-color: white;
+                color: #7484fd;
+            }
+            input[type="submit"]:focus {
+            color: #7484fd;
+                border: 1px solid #7484fd;
+                border-radius: 5px;
+                padding: 10px;
+                margin: 10px;
+                background-color: white;
+                color: #7484fd;
+            }
+            input[type="submit"]:visited {
+            color: #7484fd;
+                border: 1px solid #7484fd;
+                border-radius: 5px;
+                padding: 10px;
+                margin: 10px;
+                background-color: white;
+                color: #7484fd;
+            }
+
+            table {
+                    margin-top: 20px;
+                    border-collapse: collapse;
+                    width: 100%;
+                    background-color: #ebe9ff;
+                }
+
+                table, th, td {
+                    border: 1px solid black;
+                }
+
+                th, td {
+                    padding: 8px;
+                    text-align: left;
+                }
+                tr:hover {
+                    background-color: #fff9ff;
+                }
+                th {
+                    background-color: #7484fd;
+                    color: white;
+                }
+                th:hover {
+                    background-color: #fff9ff;
+                    color: #7484fd;
+                }
+                td:hover {
+                    background-color: #fff9ff;
+                    color: #7484fd;
+                }
+
+
+                .example-wrapper a {
+                    color: #7484fd;
+                    text-decoration: none;
+                }
+                .example-wrapper a:hover {
+                    color: #7484fd;
+                    text-decoration: underline;
+                }
+                .example-wrapper a:active {
+                    color: #7484fd;
+                    text-decoration: underline;
+                }
+                .example-wrapper a:focus {
+                    color: #7484fd;
+                    text-decoration: underline;
+                }
+                .example-wrapper a:visited {
+                    color: #7484fd;
+                    text-decoration: none;
+                }
+
+    </style>
+
+
+{% if app.user %}
+
+
+<table>
+    <thead>
+        <tr>
+            <th>N° de Devis</th>
+            <th>Date</th>
+            <th>Heure</th>
+            <th>Hauteur</th>
+            <th>Longueur</th>
+            <th>Haie</th>
+            <th>type choisie par l'utilisateur</th>
+            <th> Nom d'utilisateur</th>
+            <th>Montant</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for devis in devis %}
+            {% for tailler in taillers %}
+                {% if tailler.devis == devis %}
+                    <tr>
+                        <td>{{ devis.id }}</td>
+
+                        <td>{{ devis.date|date('Y-m-d') }}</td>
+                        <td>{{ devis.date|date('H:i:s') }}</td>
+
+
+                        <td>{{ tailler.hauteur }} m</td>
+                        <td>{{ tailler.longueur }} m</td>
+                        <td>
+                        {% if tailler.haie is not null %}
+                            {{ tailler.haie.nom }}
+                        {% else %}
+                            Aucune haie associée
+                        {% endif %}
+                        </td>
+                        <td>{{ devis.typeUtilisateur }}</td>
+
+                        <td>{{ devis.user.nom }} {{devis.user.prenom}}</td>
+                        <td>{{ devis.montantTotal }} €</td>
+
+                        <td>
+                            <form action="{{ path('devis_delete', {'id': devis.id}) }}" method="post">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ devis.id) }}">
+                                <input type="submit" value="Supprimer">
+                                <input type="button" value="Modifier" onclick="window.location.href='{{ path('app_devis_edit', {'id': devis.id}) }}'">
+                            </form>
+                        </td>
+
+
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+    <h1>Vous n'êtes pas connecté</h1>
+{% endif %}
+{% endblock %}

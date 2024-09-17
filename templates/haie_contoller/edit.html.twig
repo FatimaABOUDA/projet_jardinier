@@ -1,0 +1,186 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Haie{% endblock %}
+
+{% block body %}
+<style>
+    { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    code { background: #F5F5F5; padding: 2px 6px; }
+    label {
+            color: #7484fd;
+                font-weight: bold;
+                margin: 10px;
+            }
+            input {
+            color: #7484fd;
+            border: 1px solid #7484fd;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            }
+            input:focus {
+            color: #7484fd;
+            border: 1px solid #7484fd;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            }
+            input:active {
+            color: #7484fd;
+            border: 1px solid #7484fd;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            }
+            input:hover {
+            color: #7484fd;
+            border: 1px solid #7484fd;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            }
+            input:visited {
+            color: #7484fd;
+            border: 1px solid #7484fd;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            }
+
+            button {
+            color: #7484fd;
+                border: 1px solid #7484fd;
+                border-radius: 5px;
+                padding: 10px;
+                margin: 10px;
+                background-color: #7484fd;
+                color: white;
+            }
+            button:hover {
+            color: #7484fd;
+                border: 1px solid #7484fd;
+                border-radius: 5px;
+                padding: 10px;
+                margin: 10px;
+                background-color: white;
+                color: #7484fd;
+            }
+            button:active {
+            color: #7484fd;
+                border: 1px solid #7484fd;
+                border-radius: 5px;
+                padding: 10px;
+                margin: 10px;
+                background-color: white;
+                color: #7484fd;
+            }
+            button:focus {
+            color: #7484fd;
+                border: 1px solid #7484fd;
+                border-radius: 5px;
+                padding: 10px;
+                margin: 10px;
+                background-color: white;
+                color: #7484fd;
+            }
+
+            button:visited {
+            color: #7484fd;
+                border: 1px solid #7484fd;
+                border-radius: 5px;
+                padding: 10px;
+                margin: 10px;
+                background-color: white;
+                color: #7484fd;
+            }
+            a {
+            color: #7484fd;
+            text-decoration: none;
+            }
+            a:hover {
+            color: #7484fd;
+            text-decoration: none;
+            }
+            a:active {
+            color: #7484fe;
+            text-decoration: none;
+            }
+
+            select {
+            color: #7484fd;
+            border: 1px solid #7484fd;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            }
+            select:focus {
+            color: #7484fd;
+            border: 1px solid #7484fd;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            }
+            select:active {
+            color: #7484fd;
+            border: 1px solid #7484fd;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            }
+            select:hover {
+            color: #7484fd;
+            border: 1px solid #7484fd;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            }
+            select:visited {
+            color: #7484fd;
+            border: 1px solid #7484fd;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            }
+            option {
+            color: #7484fd;
+            border: 1px solid #7484fd;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+
+            }
+            option:focus {
+            color: #7484fd;
+            border: 1px solid #7484fd;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+
+            }
+            option:active {
+            color: #7484fd;
+            border: 1px solid #7484fd;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+
+            }
+            option:hover {
+            color: #7484fd;
+            border: 1px solid #7484fd;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+
+            }
+
+
+</style>
+    <h1>Edit Haie</h1>
+
+    {{ include('haie_contoller/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_haie_contoller_index') }}">back to list</a>
+
+    {{ include('haie_contoller/_delete_form.html.twig') }}
+{% endblock %}

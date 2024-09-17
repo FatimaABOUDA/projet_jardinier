@@ -1,0 +1,215 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Haie{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code {
+    background: #F5F5F5; padding: 2px 6px;
+    }
+
+        .example-wrapper label {
+        color: #7484fd;
+            font-weight: bold;
+            margin: 10px;
+        }
+        input {
+        color: #7484fd;
+        border: 1px solid #7484fd;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px;
+        }
+        input:focus {
+        color: #7484fd;
+        border: 1px solid #7484fd;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px;
+        }
+        input:active {
+        color: #7484fd;
+        border: 1px solid #7484fd;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px;
+        }
+        input:hover {
+        color: #7484fd;
+        border: 1px solid #7484fd;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px;
+        }
+        input:visited {
+        color: #7484fd;
+        border: 1px solid #7484fd;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px;
+        }
+
+        input[type="submit"] {
+        color: #7484fd;
+            border: 1px solid #7484fd;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            background-color: #7484fd;
+            color: white;
+        }
+        input[type="submit"]:hover {
+        color: #7484fd;
+            border: 1px solid #7484fd;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            background-color: white;
+            color: #7484fd;
+        }
+        input[type="submit"]:active {
+        color: #7484fd;
+            border: 1px solid #7484fd;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            background-color: white;
+            color: #7484fd;
+        }
+        input[type="submit"]:focus {
+        color: #7484fd;
+            border: 1px solid #7484fd;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            background-color: white;
+            color: #7484fd;
+        }
+        input[type="submit"]:visited {
+        color: #7484fd;
+            border: 1px solid #7484fd;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            background-color: white;
+            color: #7484fd;
+        }
+
+        table {
+                margin-top: 20px;
+                border-collapse: collapse;
+                width: 100%;
+                background-color: #ebe9ff;
+            }
+
+            table, th, td {
+                border: 1px solid black;
+            }
+
+            th, td {
+                padding: 8px;
+                text-align: left;
+            }
+            tr:hover {
+                background-color: #fff9ff;
+            }
+            th {
+                background-color: #7484fd;
+                color: white;
+            }
+            th:hover {
+                background-color: #fff9ff;
+                color: #7484fd;
+            }
+            td:hover {
+                background-color: #fff9ff;
+                color: #7484fd;
+            }
+
+            button {
+                color: #7484fd;
+                border: 1px solid #7484fd;
+                border-radius: 5px;
+                padding: 10px;
+                margin: 10px;
+                background-color: #7484fd;
+                color: white;
+            }
+            button:hover {
+                color: #7484fd;
+                border: 1px solid #7484fd;
+                border-radius: 5px;
+                padding: 10px;
+                margin: 10px;
+                background-color: white;
+                color: #7484fd;
+            }
+            button:active {
+                color: #7484fd;
+                border: 1px solid #7484fd;
+                border-radius: 5px;
+                padding: 10px;
+                margin: 10px;
+                background-color: white;
+                color: #7484fd;
+            }
+            button:focus {
+                color: #7484fd;
+                border: 1px solid #7484fd;
+                border-radius: 5px;
+                padding: 10px;
+                margin: 10px;
+                background-color: white;
+                color: #7484fd;
+            }
+            button:visited {
+                color: #7484fd;
+                border: 1px solid #7484fd;
+                border-radius: 5px;
+                padding: 10px;
+                margin: 10px;
+                background-color: white;
+                color: #7484fd;
+            }
+            .link {
+                 color: #7484fd;
+                 border: 1px solid #7484fd;
+                 border-radius: 5px;
+                 padding: 10px;
+                 margin: 10px;
+                 background-color: white;
+                 color: #7484fd;
+                 text-decoration: none;
+                 bottom: -10px;
+            }
+
+
+
+
+</style>
+    <h1>Haie</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Code</th>
+                <td>{{ haie.code }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ haie.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ haie.prix }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="link" href="{{ path('app_haie_contoller_index') }}">back to list</a>
+
+    <a class="link" href="{{ path('app_haie_contoller_edit', {'code': haie.code}) }}">edit</a>
+
+    {{ include('haie_contoller/_delete_form.html.twig') }}
+{% endblock %}

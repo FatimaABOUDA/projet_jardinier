@@ -1,17 +1,266 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+    {% block stylesheets %}
+    {% endblock %}
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Avenir, sans-serif;
+            color: #000;
+        }
 
-        {% block javascripts %}
-{% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
-</html>
+        .topnav {
+            width: 100%;
+            margin: 0 auto;
+            background-color: #aaa;
+            position: sticky;
+            top: 0px;
+            z-index: 100;
+            border-bottom: 1px solid #7484fd;
+            background-color: #000;
+
+        }
+
+        .ligne{
+            display: flex;
+        }
+
+        .logo {
+            width: 50%;
+            float: right;
+            padding: 10px 0px;
+            background-color: #f9f9fa;
+        }
+
+        .logo ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .logo ul li {
+            flex: 1;
+        }
+
+        .logo ul li a {
+            display: block;
+            text-align: center;
+            color: #000;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .logo ul li a:hover {
+            color: #7484fd;
+        }
+
+        .user{
+            width: 50%;
+            float: left;
+            padding: 10px 10%;
+                     background-color: #f9f9fa;
+
+                    }
+                    .user a{
+                        color: #fff;
+                        background-color: #7484fd;
+                        padding: 5px 10px;
+                        border-radius: 5px;
+                        text-decoration: none;
+                    }
+                    .user a:hover{
+                        background-color: #7484fd;
+                    }
+
+
+        .topnav .menu {
+            width: 100%;
+            float: right;
+            padding: 10px 0px;
+            background-color: #f9f9fa;
+        }
+
+        .topnav .menu ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .topnav .menu ul li {
+            position: relative;
+            flex: 1;
+        }
+
+        .topnav .menu ul li a {
+            display: block;
+            text-align: center;
+            color: #000;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .topnav .menu ul li a:hover {
+            color: #7484fd;
+        }
+
+        .topnav .menu ul li ul {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            display: none;
+            background-color: #fff;
+            padding: 10px 0px;
+            border-top: 1px solid #7484fd;
+            border-bottom: 1px solid #7484fd;
+            transition: all 0.3s ease;
+        }
+
+        .topnav .menu ul li:hover ul {
+            display: block;
+        }
+
+        .topnav .menu ul li ul li {
+            width: 100%;
+            text-align: left;
+            padding: 10px 20px;
+            border-bottom: 1px solid #7484fd;
+        }
+
+        .topnav .menu ul li ul li a {
+            width: 100%;
+            text-align: left;
+            color: #000;
+            font-size: 16px;
+            font-weight: normal;
+            transition: all 0.3s ease;
+        }
+
+        .topnav .menu ul li ul li a:hover {
+            color: #7484fd;
+        }
+
+        .topnav .menu ul li ul li:last-child {
+            border-bottom: none;
+        }
+
+        .topnav .menu ul li ul li ul {
+            position: absolute;
+            top: 0;
+            left: 100%;
+            width: 100%;
+            display: none;
+            background-color: #fff;
+            padding: 10px 0px;
+            border-top: 1px solid #7484fd;
+            border-bottom: 1px solid #7484fd;
+            transition: all 0.3s ease;
+        }
+
+        .topnav .menu ul li ul li:hover ul {
+            display: block;
+        }
+
+        .topnav .menu ul li ul li ul li {
+            width: 100%;
+            text-align: left;
+            padding: 10px 20px;
+            border-bottom: 1px solid #7484fd;
+        }
+
+        .topnav .menu ul li ul li ul li a {
+            width: 100%;
+            text-align: left;
+            color: #000;
+            font-size: 16px;
+            font-weight: normal;
+            transition: all 0.3s ease;
+        }
+
+        .topnav .menu ul li ul li ul li a:hover {
+            color: #7484fd;
+        }
+
+        .topnav .menu ul li ul li ul li:last-child {
+            border-bottom: none;
+        }
+
+        a{
+            text-decoration: none;
+            color: black;
+            }
+            body{
+                background-color: #fff;
+            }
+
+
+    </style>
+
+    {% block javascripts %}
+    {% endblock %}
+</head>
+
+{% block menu %}
+    <div class="topnav">
+        <div class="ligne">
+        <div class="logo">
+                        <a href="{{ path('app_accuiel') }}">Le P'tit J@rdinier</a>
+                    </div>
+            {% if app.user %}
+                <div class="user">
+                    <p>
+                        {{ app.user.prenom }} {{ app.user.nom }}
+                        <a href="{{ path('app_profile') }}">Profil</a>
+                        <a href="{{ path('app_logout') }}">Déconnexion</a>
+                    </p>
+                </div>
+            {% endif %}
+
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a href="{{ path('app_accuiel') }}">Accueil</a></li>
+                <li>
+                    <a href="#">Devis ▼</a>
+                    <ul>
+                        <li><a href="{{ path ('app_choix') }}">Faire un devis en ligne</a></li>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li><a href="{{ path('app_devis_show')}}">Voir tous les devis </a></li>
+                         {% endif %}
+                        <li><a href="{{path('app_devis_mesdevis')}}">Voir mes devis</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Gestion des types de haies ▼</a>
+                    <ul>
+                        <li><a href="{{ path('app_creerhaie')}}">Création</a></li>
+                        <li><a href="{{path('app_list_haie')}}">Consultation/Modification</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Se connecter ▼</a>
+                    <ul>
+                        <li><a href="{{ path('app_login') }}">Connexion</a></li>
+                        <li><a href="{{ path('app_register') }}">Inscription</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+{% block body %}
+{% block content %}
+<h1>Le p'tit jardinier</h1>
+<h2>Des professionnels à votre service</h2>
+<a href="{{path('app_choix')}}">Obtenir un devis en ligne pour une taille de haie</a>
+
+{% endblock %}
+{% endblock %}

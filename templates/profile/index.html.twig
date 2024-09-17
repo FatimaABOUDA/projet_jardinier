@@ -1,0 +1,140 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <style>
+        .container {
+            margin-top: 50px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50%;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+
+        }
+        button {
+            background-color: #7484fd;
+            color: white;
+
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #5f6ebc;
+        }
+
+        label {
+            font-size: 20px;
+            font-weight: bold;
+            font-family: 'popins', sans-serif;
+        }
+
+
+
+        button:hover {
+            background-color: #5f6ebc;
+        }
+
+        label {
+            font-size: 20px;
+            font-weight: bold;
+            font-family: 'popins', sans-serif;
+        }
+
+        input[type="text"], input[type="email"], input[type="password"]
+        {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            width: 100%;
+
+        }
+
+        input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus
+        {
+            background-color: #f0f0f0;
+            border: 1px solid #000;
+
+        }
+
+        input[type="text"]:hover, input[type="email"]:hover, input[type="password"]:hover
+        {
+            background-color: #f0f0f0;
+            border: 1px solid #000;
+        }
+
+
+               input[type="email"],
+               input[type="password"] ,
+               input[type="text"],
+               input[type="checkbox"],
+               input[type="number"]{
+                   width: 100%;
+                   padding: 10px;
+                   margin-bottom: 20px;
+                   border: 1px solid #7484fd;
+                   border-radius: 4px;
+                   box-sizing: border-box;
+                   margin: 10px;
+               }
+
+               input[type="email"]:focus,
+               input[type="password"]:focus,
+                input[type="text"]:focus,
+                input[type="checkbox"]:focus,
+                input[type="number"]:focus{
+
+                   border-color: #7484fd;
+               }
+
+
+    </style>
+{% endblock %}
+
+{% block title %}Profil{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <h2>Profil</h2>
+        <form method="post">
+            <label for="nom">Nom d'utilisateur : </label>
+            <label>{{ user.nom }}</label>
+            <br>
+            <label for="prenom">Prénom : </label>
+            <label>{{ user.prenom }}</label>
+
+            <br>
+            <label for="role">Rôle : </label>
+            <label>{{ user.roles|join(', ') }}</label>
+            <br>
+            <label for="email">Email : </label>
+            <label>{{ user.email }}</label>
+            <br>
+            <label for="adresse">Adresse : </label>
+            <label>{{ user.adresse }}</label>
+            <br>
+            <label for="cp">Code postal : </label>
+            <label>{{ user.cp }}</label>
+            <br>
+            <label for="ville">Ville : </label>
+            <label>{{ user.ville }}</label>
+
+        </form>
+        <button><a href="{{ path('edit_user', {'id': user.id}) }}">Modifier</a></button>
+        <button><a href="{{ path('edit_password',{'id':user.id}) }}">Changer le mot de passe</a></button>
+
+    </div>
+
+
+{% endblock %}

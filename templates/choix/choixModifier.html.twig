@@ -1,0 +1,16 @@
+{# templates/choix/choixModifier.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier le devis{% endblock %}
+
+{% block body %}
+    <h1>Modifier le devis</h1>
+    <p>Voici les détails du devis :</p>
+    <ul>
+        <li>ID du devis : {{ devis.id }}</li>
+        <li>Type d'utilisateur : {{ devis.typeUtilisateur }}</li>
+        <li>Date : {{ devis.date|date('Y-m-d ') }}</li>
+        {# Ajoutez d'autres détails du devis si nécessaire #}
+    </ul>
+{% endblock %}

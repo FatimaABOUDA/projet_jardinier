@@ -1,0 +1,114 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block stylesheets %}
+    <style>
+               body {
+                   font-family: Arial, sans-serif;
+                   background-color: #f7f7f7;
+               }
+
+               .container {
+                   max-width: 400px;
+                   background-color: #fff;
+                   padding: 20px;
+                   border-radius: 8px;
+                   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                    margin: 200px auto;}
+
+               .container h1 {
+                   font-size: 24px;
+                   margin-bottom: 20px;
+                   text-align: center;
+               }
+
+               label {
+                   display: block;
+                   margin-bottom: 5px;
+               }
+
+
+               input[type="email"],
+               input[type="password"] ,
+               input[type="text"],
+               input[type="checkbox"],
+               input[type="number"]{
+                   width: 100%;
+                   padding: 10px;
+                   margin-bottom: 20px;
+                   border: 1px solid #7484fd;
+                   border-radius: 4px;
+                   box-sizing: border-box;
+                   margin: 10px;
+               }
+
+               input[type="email"]:focus,
+               input[type="password"]:focus,
+                input[type="text"]:focus,
+                input[type="checkbox"]:focus,
+                input[type="number"]:focus{
+
+                   border-color: #7484fd;
+               }
+
+                .cote-a-cote{
+                     display: flex;
+                     justify-content: space-between;
+                }
+               button[type="submit"] {
+                   width: 100%;
+                   padding: 10px;
+                   border: none;
+                   border-radius: 4px;
+                   background-color: #7484fd;
+                   color: #fff;
+                   font-size: 16px;
+                   cursor: pointer;
+               }
+
+               button[type="submit"]:hover {
+                   background-color: #5f6ebc;
+               }
+
+               .alert {
+                   background-color: #f8d7da;
+                   color: #842029;
+                   padding: 10px;
+                   margin-bottom: 20px;
+                   border: 1px solid #f5c2c7;
+                   border-radius: 4px;
+               }
+    </style>
+{% endblock %}
+
+
+{% block body %}
+    <div class="container">
+    <h1>Register</h1>
+
+    {{ form_errors(registrationForm) }}
+
+    {{ form_start(registrationForm) }}
+        <div class="cote-a-cote">
+            {{ form_row(registrationForm.nom) }}
+            {{ form_row(registrationForm.prenom) }}
+        </div>
+            {{ form_row(registrationForm.adresse) }}
+        <div class="cote-a-cote">
+
+        {{ form_row(registrationForm.ville)}}
+            {{ form_row(registrationForm.cp) }}
+        </div>
+        <div class="cote-a-cote">
+            {{ form_row(registrationForm.email) }}
+            {{ form_row(registrationForm.plainPassword, {
+                label: 'Password'
+            }) }}
+        </div>
+        {{ form_row(registrationForm.agreeTerms) }}
+
+        <button type="submit" class="btn">Register</button>
+    {{ form_end(registrationForm) }}
+        <div>
+{% endblock %}
