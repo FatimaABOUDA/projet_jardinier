@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mesure{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .example-wrapper fieldset {
+        color: #7484fd;
+        border: 1px solid #7484fd;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px;
+    }
+    .example-wrapper label {
+        color: #7484fd;
+        font-weight: bold;
+        margin: 10px;
+    }
+    .example-wrapper input {
+        color: #7484fd;
+        border: 1px solid #7484fd;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px;
+    }
+    .example-wrapper select {
+        color: #7484fd;
+        border: 1px solid #7484fd;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px;
+    }
+    .example-wrapper input[type="submit"] {
+        color: #7484fd;
+        border: 1px solid #7484fd;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px;
+        background-color: #7484fd;
+        color: white;
+    }
+    .example-wrapper input[type="submit"]:hover {
+        color: #7484fd;
+        border: 1px solid #7484fd;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px;
+        background-color: white;
+        color: #7484fd;
+    }
+</style>
+
+<div class="example-wrapper">
+{% if app.user %}
+  <form action="{{ path('app_devis') }}" method="post">
+      <fieldset>
+      <p>vous etes un {{typeUtilisateur}}</p>
+          <label for="haieId">Haie</label>
+          <select name="haieId" id="haieId">
+              {% for haie in haies %}
+                  <option value="{{ haie.id }}">{{ haie.nom }}</option>
+              {% endfor %}
+          </select>
+          <br>
+          <label for="longueur">Longueur</label>
+          <input type="number" step="0.000001" id="longueur" name="longueur">
+          <br>
+          <label for="hauteur">Hauteur</label>
+          <input type="number" step="0.000001" id="hauteur" name="hauteur">
+          <br>
+          <input type="submit" value="Envoyer">
+      </fieldset>
+  </form>
+{% else %}
+    <p>Vous devez vous connecter pour accéder à cette page</p>
+    {% endif %}
+
+{% endblock %}
