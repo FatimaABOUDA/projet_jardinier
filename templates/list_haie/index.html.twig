@@ -1,0 +1,184 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ListHaieController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code {
+    background: #F5F5F5; padding: 2px 6px;
+    }
+
+        .example-wrapper label {
+        color: #7484fd;
+            font-weight: bold;
+            margin: 10px;
+        }
+        input {
+        color: #7484fd;
+        border: 1px solid #7484fd;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px;
+        }
+        input:focus {
+        color: #7484fd;
+        border: 1px solid #7484fd;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px;
+        }
+        input:active {
+        color: #7484fd;
+        border: 1px solid #7484fd;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px;
+        }
+        input:hover {
+        color: #7484fd;
+        border: 1px solid #7484fd;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px;
+        }
+        input:visited {
+        color: #7484fd;
+        border: 1px solid #7484fd;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px;
+        }
+
+        input[type="submit"] {
+        color: #7484fd;
+            border: 1px solid #7484fd;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            background-color: #7484fd;
+            color: white;
+        }
+        input[type="submit"]:hover {
+        color: #7484fd;
+            border: 1px solid #7484fd;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            background-color: white;
+            color: #7484fd;
+        }
+        input[type="submit"]:active {
+        color: #7484fd;
+            border: 1px solid #7484fd;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            background-color: white;
+            color: #7484fd;
+        }
+        input[type="submit"]:focus {
+        color: #7484fd;
+            border: 1px solid #7484fd;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            background-color: white;
+            color: #7484fd;
+        }
+        input[type="submit"]:visited {
+        color: #7484fd;
+            border: 1px solid #7484fd;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            background-color: white;
+            color: #7484fd;
+        }
+
+        table {
+                margin-top: 20px;
+                border-collapse: collapse;
+                width: 100%;
+                background-color: #ebe9ff;
+            }
+
+            table, th, td {
+                border: 1px solid black;
+            }
+
+            th, td {
+                padding: 8px;
+                text-align: left;
+            }
+            tr:hover {
+                background-color: #fff9ff;
+            }
+            th {
+                background-color: #7484fd;
+                color: white;
+            }
+            th:hover {
+                background-color: #fff9ff;
+                color: #7484fd;
+            }
+            td:hover {
+                background-color: #fff9ff;
+                color: #7484fd;
+            }
+
+
+            .example-wrapper a {
+                color: #7484fd;
+                text-decoration: none;
+            }
+            .example-wrapper a:hover {
+                color: #7484fd;
+                text-decoration: underline;
+            }
+            .example-wrapper a:active {
+                color: #7484fd;
+                text-decoration: underline;
+            }
+            .example-wrapper a:focus {
+                color: #7484fd;
+                text-decoration: underline;
+            }
+            .example-wrapper a:visited {
+                color: #7484fd;
+                text-decoration: none;
+            }
+
+</style>
+{% if app.user %}
+<div class="example-wrapper">
+        <table>
+             <tr>
+                 <th>Code</th>
+                 <th>Nom</th>
+                 <th>Prix</th>
+                 <th></th>
+             </tr>
+             {% for haie in haies %}
+             <tr>
+                 <td>{{ haie.code }}</td>
+                 <td>{{ haie.nom }}</td>
+                 <td>{{ haie.prix }}</td>
+                    <td>
+
+                    <a href="{{ path('modifier_haie', { 'code': haie.getCode() }) }}">
+                        Consultation/Modification
+                    </a>
+                    </td>
+             </tr>
+
+             {% endfor %}
+         </table>
+</div>
+{% else %}
+    <h1>Vous devez vous connecter pour accéder à cette page</h1>
+    <a href="{{ path('app_login') }}">Connexion</a>
+    <a href="{{ path('app_register') }}">Inscription</a>
+{% endif %}
+{% endblock %}
+

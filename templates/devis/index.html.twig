@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Devis{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .example-wrapper h1{
+    color: #7484fd;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    }
+    .example-wrapper p{
+    color: #7484fd;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    }
+    .example-wrapper small{
+    color: #7484fd;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 10px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    }
+    .example-wrapper blockquote{
+  margin: 0;
+    padding: 0;
+    border: none;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    margin-top: 30px;
+
+}
+
+blockquote p {
+  padding: 15px;
+  background: #eee;
+  border-radius: 5px;
+    font-size: 17px;
+    font-weight: 700;
+margin-bottom: 30px;
+margin-top: 30px;
+
+}
+
+blockquote p::before {
+  content: '\201C';
+}
+
+blockquote p::after {
+  content: '\201D';
+}
+
+
+</style>
+
+{% if app.user %}
+<div class="example-wrapper">
+    <h1>Devis</h1>
+    <p>n° de devis : {{ devis.id }}</p>
+    <p>Vous avez choisi de faire une haie de {{ hauteur }}m de hauteur et de {{ longueur }} m de longueur de type {{ haie.nom }}</p>
+    <p>Vous êtes {{ devis.typeUtilisateur }}</p>
+    <p>Le montant total de votre devis est de : {{ montantTotal }} €</p>
+
+    <blockquote>calcul du prix :
+        Prix = Prix unitaire(*) x Longueur haie
+        Si Hauteur > 1m50, multiplier le prix par 1.5
+        Si l'utilisateur est une entreprise, appliquer une remise de 10%
+        (*) Prix unitaire = 30 € pour le Laurier, 35 € pour le Thuya, 28€ pour le Troène
+    </blockquote>
+</div>
+{% else %}
+<div class="example-wrapper">
+    <h1>Devis</h1>
+    <p>Vous devez être connecté pour enregistrer le devis dans la base de données</p>
+    <p>Si vous n'avez pas de compte, vous pouvez en créer un en cliquant sur le lien suivant : <a href="{{ path('app_register') }}">Créer un compte</a></p>
+    <p>Si vous avez déjà un compte, vous pouvez vous connecter en cliquant sur le lien suivant : <a href="{{ path('app_login') }}">Se connecter</a></p>
+
+{% endif %}
+
+{% endblock %}
